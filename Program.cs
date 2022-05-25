@@ -56,10 +56,7 @@ namespace Arrays_Listen
                 array1D[i] = rnd.Next(1, 100);
             }
             Console.Write("\n");
-            for (int i = 0; i < array1D.Length; i++)
-            {
-                Console.Write(array1D[i]+"\t");
-            }
+            ArrayZuKonsole(array1D);
             Console.Write("\n");
             int summe = 0;
             for (int i = 0; i < array1D.Length; i++)
@@ -82,7 +79,47 @@ namespace Arrays_Listen
                 Console.Write(array1D[i]+"\t");
             }
             Console.Write("\n");
+            Array.Reverse(array1D);
+            ArrayZuKonsole(array1D);
+            Console.Write("\n");
             //Geben Sie das Array von klein nach groß sortiert aus.
+            Array.Sort(array1D);
+            ArrayZuKonsole(array1D);
+            //Bestimmen Sie den Mittelwert der Einträge des array1D und geben Sie diesen aus.
+            Console.WriteLine("\nDurchschnitt der Elemente:");
+            Console.WriteLine(array1D.Average());
+            //Teilerliste
+            Console.WriteLine("Die Teiler einer zahl sollen bestimmt werden.");
+            Console.Write("Zahl eingeben:");
+            int zahl = Convert.ToInt32(Console.ReadLine());
+            //Ausgabe der Teilerliste:
+            ArrayZuKonsole(TeilerListeErstellen(zahl).ToArray());
         }
+        //Schreiben sie eine Methode, die (int)Arrays in
+        //die Konsole ausgibt.
+        static void ArrayZuKonsole(int[] intArray)
+        {
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                Console.Write(intArray[i] + "\t");
+            }
+        }
+        //Schreiben Sie eine Methode, die eine ganze Zahl entgegen
+        //nimmt, die Teiler dieser Zahl bestimmt und diese in einer
+        //Liste zurück gibt.
+
+        static List<int> TeilerListeErstellen(int zahl) // y=f(x)
+        {
+            List<int> Teiler = new List<int>();// Teiler.Add(..) hinzufügen von Elementen
+            for (int i = 1; i <= zahl; i++)
+            {
+                if (zahl % i == 0)
+                {
+                    Teiler.Add(i);
+                }
+            }
+            return Teiler;
+        }
+        
     }
 }
